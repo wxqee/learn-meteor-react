@@ -15,6 +15,6 @@ Meteor.methods({
     return Articles.remove(_id);
   },
   'articles.get'(filterData) {
-    return Articles.find({}, filterData);
+    return Articles.find({}, filterData).fetch();
   },
 });
