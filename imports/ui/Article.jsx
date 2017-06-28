@@ -9,14 +9,14 @@ export default class Article extends Component {
     return (
       <div>
         <header>
-          <h3>Subject: ({_id}) {subject}</h3>
+          <h3>Subject: {subject}</h3>
         </header>
+        <nav>
+          <a href="javascript:void;" onClick={() => Meteor.call('articles.remove', _id)}>Delete</a>
+        </nav>
         <section>
           {content}
         </section>
-        <footer>
-          ------华丽的分割线------
-        </footer>
       </div>
     );
   }
