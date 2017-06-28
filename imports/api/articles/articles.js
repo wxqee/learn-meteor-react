@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo';
+// import SimpleSchema from 'simpl-schema';
 
 export const Articles = new Mongo.Collection('articles');
 
@@ -6,6 +7,11 @@ Articles.schema = new SimpleSchema({
   subject: {
     type: String,
     label: 'Subject',
+    custom: function() {
+      if (this.value.toString().length < 6) {
+        return "too_short";
+      }
+    }
   },
   content: {
     type: String,
@@ -13,13 +19,11 @@ Articles.schema = new SimpleSchema({
   },
 });
 
-Articles.schema.addValidator(() => {
-  if (this.key === 'subject' && this.value.length < 6) {
-    return 'Subject at least 6 characters.';
-  } else if (this.key === 'content' && this.value.length < 30) {
-    return 'Content at least 30 characters.';
-  }
+Articles.schema.addValidator(function() {
+
 });
+
+Articles.attachSchema(Articles.schema);
 
 Articles.helpers({
 

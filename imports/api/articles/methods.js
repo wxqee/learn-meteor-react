@@ -3,8 +3,6 @@ import { Articles } from './articles.js';
 
 Meteor.methods({
   'articles.add'(formData) {
-    Articles.schema.validate(formData)
-
     return Articles.insert({
       ...formData,
       createdAt: new Date(),
