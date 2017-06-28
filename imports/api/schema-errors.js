@@ -1,9 +1,3 @@
-import SimpleSchema from 'simpl-schema';
-
-SimpleSchema.setDefaultMessages({
-  messages: {
-    en: {
-      "too_short": "Too short!",
-    },
-  },
+SimpleSchema.messages({
+  "too_short": "[label]: Too short!", // [label] is validator field name.
 });

@@ -9,7 +9,7 @@ Articles.schema = new SimpleSchema({
     label: 'Subject',
     custom: function() {
       if (this.value.toString().length < 6) {
-        return "too_short";
+        return "too_short"; // get dict in schema-errors.js
       }
     }
   },
